@@ -37,6 +37,7 @@ For educational and recreational purposes only.
 - Integer Square Root: `math.isqrt(n)` is faster than `int(n**0.5)`
 - Reverse a list: `list[::-1]`
 - `defaultdict` default infinity: `d = defaultdict(lambda: math.inf)`
+- handle wraparounds with mod, for circular arrays the next element after `i` is always `(i+1)%n`
 
 ### Bit Manipulation
 
@@ -52,6 +53,10 @@ For educational and recreational purposes only.
 
 ### Math
 
+- Division is iterated subtraction.
+- Multiplication is iterated addition.
+- Exponentiation is iterated multiplication.
+- Logarithms are iterated division.
 - Sum of first `n` natural numbers: `( n * ( n + 1 ) ) // 2`
 - Sum of first `n` odd natural numbers: `n * n`
 - Sum of first `n` even natural numbers: `n * (n + 1)`
@@ -95,8 +100,8 @@ For educational and recreational purposes only.
 
 ```python
 
-def in_bounds(r, c, rows, cols):
-    return 0 <= r < rows and 0 <= c < cols
+def in_bounds(row, col, ROWS, COLS):
+    return 0 <= row  and row < ROWS and 0 <= col and col < COLS
 
 # Directions
 
@@ -154,9 +159,13 @@ for dr, dc in queen:
         nc += dc
 
 ```
-
-- Technique:
-    - check if in bounds after calculating the new row and column
+- Vocabulary:
+    - Transposition: the first row becomes the first column, the second row becomes the second column, and so on
+    - Rotation: A transformation that turns the matrix 90 degrees, clockwise or counterclockwise
+    - Horizontal reflection: the first column becomes the last column, the second column becomes second last, and so on.
+    - Vertical reflection: The first row becomes the last row, the second row becomes the second last, and so on.
+- Remember:
+    - Check if row and col are in bounds after calculating the new row and column
 - Bugs:
     - out-of-bounds errors
 
