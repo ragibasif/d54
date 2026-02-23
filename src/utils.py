@@ -5,10 +5,10 @@ import re
 from functools import wraps
 
 logging.basicConfig(level=logging.DEBUG, format="[%(filename)s:%(lineno)d] %(message)s")
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-def log(*args):
+def log(*args)->None:
     frame = inspect.currentframe().f_back
     var_names = inspect.getframeinfo(frame).code_context[0].strip()
 
@@ -30,7 +30,7 @@ def trace(func):
     """Decorator to trace recursive functions."""
     level = 0
 
-    @wraps(func)
+    @wraps(wrapped=func)
     def wrapper(*args, **kwargs):
         nonlocal level
         indent = "  | " * level
@@ -48,7 +48,7 @@ def trace(func):
 def timer(func):
     """Decorator to time functions."""
 
-    @wraps(func)
+    @wraps(wrapped=func)
     def wrapper(*args, **kwargs):
         start = time.perf_counter()
         result = func(*args, **kwargs)

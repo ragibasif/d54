@@ -38,6 +38,7 @@ For educational and recreational purposes only.
 - Reverse a list: `list[::-1]`
 - `defaultdict` default infinity: `d = defaultdict(lambda: math.inf)`
 - handle wraparounds with mod, for circular arrays the next element after `i` is always `(i+1)%n`
+- recursive functions can benefit from the builtin `@cache` decorator in `functools`: `from functools import cache`
 
 ### Bit Manipulation
 
@@ -62,6 +63,15 @@ For educational and recreational purposes only.
 - Sum of first `n` even natural numbers: `n * (n + 1)`
 - Even number: `n = 2k`
 - Odd number: `n = 2k + 1`
+
+```python
+def gcd(a:int, b:int)->int:
+    while b:
+        a, b = b, a % b
+    return a
+
+def lcm(a:int, b:int)->int: return a * b // gcd(a=a,b= b)
+```
 
 ### NP-Complete
 

@@ -1,7 +1,7 @@
 [project]
 name = "d54"
 version = "0.1.0"
-description = "Add your description here"
+description = "d54"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []
