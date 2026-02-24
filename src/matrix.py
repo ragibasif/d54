@@ -2,6 +2,42 @@ class Matrix:
     """Matrices from linear algebra"""
     def __init__(self,grid):
         self.matrix =[row.copy() for row in grid]
+
+    def transpose(self):
+        """
+        the first row becomes the first column, second row becomes the second column, etc.
+        """
+        for row in range(len(self.matrix)):
+            for col in range(row,len(self.matrix[row])):
+                self.matrix[row][col], self.matrix[col][row]= self.matrix[col][row], self.matrix[row][col]
+
+    def clockwise_rotate():
+        """
+        NOTE: (TRICK) Transpositions and rotations turn rows into columns and columns into rows
+        """
+        self.transpose()
+        self.horizontal_flip()
+
+    def counterclockwise_rotate():
+        self.transpose()
+        self.vertical_flip()
+
+    def horizontal_flip(self):
+        """
+        the first column becomes the last column, the second column becomes the second last, etc.
+        """
+        for row in range(len(self.matrix)):
+            for col in range(len(self.matrix[row])//2):
+                self.matrix[row][col],self.matrix[row][len(self.matrix[row])-col-1]=self.matrix[row][len(self.matrix[row])-col-1], self.matrix[row][col]
+
+    def vertical_flip(self):
+        """
+        the first row becomes the last row, the second row becomes the second last, etc.
+        """
+        for row in range(len(self.matrix)//2):
+            self.matrix[row],self.matrix[len(self.matrix)-row-1]=self.matrix[len(self.matrix)-row-1], self.matrix[row]
+
+
     @staticmethod
     def add(A,B):
         ar,ac,br,bc = len(A),len(A[0]),len(B),len(B[0])
@@ -11,6 +47,7 @@ class Matrix:
             for col in range(ac):
                 C[row][col] += B[row][col]
         return C
+
     @staticmethod
     def sub(A,B):
         ar,ac,br,bc = len(A),len(A[0]),len(B),len(B[0])
@@ -20,6 +57,7 @@ class Matrix:
             for col in range(ac):
                 C[row][col] -= B[row][col]
         return C
+
     @staticmethod
     def mul(A,B):
         # time: O(N*N*N)
@@ -39,6 +77,7 @@ class Matrix:
             for col in range(cc): # time: O(N)
                 C[row][col] = dot(row,col) # time: O(N)
         return C
+
 
 class Directions:
     """

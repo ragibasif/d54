@@ -1,6 +1,6 @@
 from typing import Any
-from src.ListNode import ListNode
-from src.TreeNode import TreeNode
+from ListNode import ListNode
+from TreeNode import TreeNode
 
 class dbg:
 

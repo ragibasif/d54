@@ -7,12 +7,12 @@ from collections import deque, defaultdict, Counter
 import itertools
 from typing import NoReturn
 # my libs
-from src.rng import rng
-from src.dbg import dbg
-from src.bits import bits
-from src.utils import log,timer,trace
-from src.ListNode import ListNode
-from src.TreeNode import TreeNode
+from rng import rng
+from dbg import dbg
+from bits import bits
+from utils import log,timer,trace
+from ListNode import ListNode
+from TreeNode import TreeNode
 
 MOD = 10**9 + 7
 EPS = 1e-9
