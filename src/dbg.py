@@ -1,9 +1,14 @@
+from typing import Any
+from src.ListNode import ListNode
+from src.TreeNode import TreeNode
+
 class dbg:
+
     def __init__(self) -> None:
         pass
 
     @staticmethod
-    def listnode(head=None)->str:
+    def listnode(head:ListNode|None=None)->str:
         if not head:
             return "None"
         buf:list[str] = []
@@ -32,15 +37,15 @@ class dbg:
         return f"{res}"
 
     @staticmethod
-    def treenode(root)->str:
+    def treenode(root:TreeNode|None=None)->str:
 
         if not root:
             return "None"
-        lines = []
+        lines:list[str] = []
 
-        def _build(node, prefix="", is_left=True, is_root=True):
+        def _build(node:TreeNode|None, prefix:str="", is_left:bool=True, is_root:bool=True)->None:
             if node is None:
-                label = "(L)" if is_left else "(R)"
+                label:str = "(L)" if is_left else "(R)"
                 # Using \-- for bottom (left) and /-- for top (right)
                 connector = "\\-- " if is_left else "/-- "
                 lines.append(f"{prefix}{connector}{label} [N]")
@@ -84,7 +89,7 @@ class dbg:
         path_set = set(path) if path else set()
         R, C = len(grid), len(grid[0])
 
-        all_vals = []
+        all_vals:list[str] = []
         for row in grid:
             for val in row:
                 all_vals.append(str(val))
@@ -95,14 +100,14 @@ class dbg:
         full_cell_w = cell_w + 2
         row_idx_w = len(str(R-1))
 
-        buf = []
+        buf:list[Any] = []
         header_padding = " " * (row_idx_w + 3)
         header = header_padding + " ".join(str(c).center(full_cell_w) for c in range(C))
         buf.append(header)
 
         buf.append(" " * (row_idx_w + 2) + "-" * (len(header) - row_idx_w - 2))
         for r, row in enumerate(grid):
-            line = []
+            line:list[str] = []
             for c, val in enumerate(row):
                 char = str(val)
                 display = char.center(cell_w)
