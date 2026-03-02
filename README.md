@@ -178,5 +178,9 @@ for dr, dc in queen:
     - Check if row and col are in bounds after calculating the new row and column
 - Bugs:
     - out-of-bounds errors
+- Flattening:
+    - mapping 2D to 1D: `[r, c] -> r * COLS + c`
+    - mapping 1D to 2D: `i -> [i // COLS, i % COLS]`
+
 
 

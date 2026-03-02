@@ -17,7 +17,6 @@ from TreeNode import TreeNode
 MOD = 10**9 + 7
 EPS = 1e-9
 
-
 def solve()->None:
 
     return
